@@ -1,4 +1,4 @@
-function createSquares(squareCount = 16) {
+function createBoard(squareCount = 16) {
     const container = document.querySelector(".container")
     const squareSize = 800 / squareCount;
     squareCount = squareCount * squareCount;
@@ -42,4 +42,32 @@ function setOpacity(squareElement) {
     return newOpacity;
 };
 
-createSquares();
+function clearBoard() {
+    const container = document.querySelector(".container")
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+
+function getUserInput() {
+    while (true) {
+        const userInput = prompt("Enter a number 1-100", 16);
+        const boardSize = Number(userInput);
+        if (boardSize >= 1 && boardSize <= 100) return boardSize;
+    };
+}
+
+function addBoardSizeEvents() {
+    const resizeBtn = document.querySelector(".resize-btn")
+    resizeBtn.addEventListener('click', () => handleResize());
+
+}
+
+function handleResize() {
+    clearBoard()
+    const userInput = getUserInput();
+    createBoard(userInput);
+}
+
+createBoard();
+addBoardSizeEvents();
