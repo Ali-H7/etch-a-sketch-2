@@ -1,0 +1,11 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 800px;
+    height: 800px;
+}
+
+.square {
+    border: 1px solid silver;
+    box-sizing: border-box;
+}
